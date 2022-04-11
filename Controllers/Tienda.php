@@ -72,6 +72,7 @@
 
 				if(is_numeric($idproducto) and is_numeric($cantidad)){
 					$arrInfoProducto = $this->getProductoIDT($idproducto);
+
 					if(!empty($arrInfoProducto)){
 						$arrProducto = array('idproducto' => $idproducto,
 											'producto' => $arrInfoProducto['nombre'],
@@ -85,8 +86,8 @@
 
 							for ($pr=0; $pr < count($arrCarrito); $pr++) {
 								if($arrCarrito[$pr]['idproducto'] == $idproducto){
-									$arrCarrito[$pr]['cantidad'] += $cantidad;
-									$on = false;
+									//$arrCarrito[$pr]['cantidad'] += $cantidad; //Suma la cantidad del producto para no duplicarlo en el modal
+									$on = false; //es un indicador para ver si el product se agrega al carrito
 								}
 							}
 							if($on){
@@ -106,7 +107,7 @@
 						$htmlCarrito ="";
 						$htmlCarrito = getFile('Template/Modals/modalCarrito',$_SESSION['arrCarrito']);
 						$arrResponse = array("status" => true, 
-											"msg" => '¡Se agrego al corrito!',
+											"msg" => '¡Se agrego al carrito!',
 											"cantCarrito" => $cantCarrito,
 											"htmlCarrito" => $htmlCarrito
 										);
@@ -141,7 +142,7 @@
 					$_SESSION['arrCarrito'] = $arrCarrito;
 					foreach ($_SESSION['arrCarrito'] as $pro) {
 						$cantCarrito += $pro['cantidad'];
-						//$subtotal += $pro['cantidad'] * $pro['precio'];
+						$subtotal += $pro['cantidad'] * $pro['precio'];
 					}
 
 					$htmlCarrito = "";
@@ -152,8 +153,8 @@
 											"msg" => '¡Producto eliminado!',
 											"cantCarrito" => $cantCarrito,
 											"htmlCarrito" => $htmlCarrito,
-											/* "subTotal" => SMONEY.formatMoney($subtotal),
-											"total" => SMONEY.formatMoney($subtotal + COSTOENVIO) */
+											"subTotal" => SMONEY.formatMoney($subtotal),
+											"total" => SMONEY.formatMoney($subtotal + COSTOENVIO)
 										);
 				}else{
 					$arrResponse = array("status" => false, "msg" => 'Dato incorrecto.');

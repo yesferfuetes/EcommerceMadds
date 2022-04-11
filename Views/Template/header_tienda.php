@@ -115,7 +115,7 @@
 						</div>
 
 						<?php if($data['page_name'] != "carrito"){ ?>
-						<div id="cantCarrito" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
+						<div class="cantCarrito icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 						<?php } ?>
@@ -138,7 +138,7 @@
 				</div>
 				
 				<?php if($data['page_name'] != "carrito"){ ?>
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
+				<div class="cantCarrito icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?= $cantCarrito; ?>">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 				<?php } ?>

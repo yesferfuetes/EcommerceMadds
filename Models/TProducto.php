@@ -182,6 +182,7 @@ trait TProducto{
 
 	}
 	
+	/* FUNCION PARA EXTRAR DATOS Y AGREGAR AL CARRITO */
 	public function getProductoIDT(int $idproducto){
 		$this->con = new Mysql();
 		$this->intIdProducto = $idproducto;

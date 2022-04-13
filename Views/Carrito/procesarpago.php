@@ -34,6 +34,7 @@ foreach ($_SESSION['arrCarrito'] as $producto) {
                                 //VERIFICANDO SI EXISTE VARIABLE DE SESION
                                 if(isset($_SESSION['login'])){
                             ?>
+                            <div>
                                 <label for="tipopago">Dirección de envío</label>
                                 <div class="bor8 bg0 m-b-12">
                                     <input id="txtDireccion" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="Dirección de envío">

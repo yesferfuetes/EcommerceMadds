@@ -24,6 +24,7 @@
 			return $request;
 		}
 
+		/* FUNCION PARA CREAR VARIABLE DE SESION */
 		public function sessionLogin(int $iduser){
 			$this->intIdUsuario = $iduser;
 			//BUSCAR ROLE 

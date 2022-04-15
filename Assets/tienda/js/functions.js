@@ -188,6 +188,25 @@ if(document.querySelector("#formRegister")){
     }
 }
 
+/* OPCIONES METODO DE PAGO */
+if(document.querySelector(".methodpago")){
+
+	let optmetodo = document.querySelectorAll(".methodpago");
+    optmetodo.forEach(function(optmetodo) {
+
+        /* Accediendo al valor value de la clase .methodpago */
+        optmetodo.addEventListener('click', function(){
+        	if(this.value == "CT"){
+        		document.querySelector("#divtipopago").classList.remove("notblock");
+        		document.querySelector("#msgpaypal").classList.add("notblock");
+        	}else{
+        		document.querySelector("#msgpaypal").classList.add("notblock");
+        		document.querySelector("#divtipopago").classList.remove("notblock");
+        	}
+        });
+    });
+}
+
 /*------Eliminar un elemento del Modal Carrito------*/
 function fntdelItem(element){
 	//Option 1 = vista Modal

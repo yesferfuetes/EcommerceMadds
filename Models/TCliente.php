@@ -11,7 +11,7 @@
         private $strPassword;
         private $strToken;
         private $intTipoId;
-        /* private $intIdTransaccion; */
+        private $intIdTransaccion;
 
     /* FUNCION PARA INSERTAR NUEVO CLIENTE EN BD */
 	public function insertCliente(string $nombre, string $apellido, int $telefono, string $email, string $password, int $tipoid){
@@ -49,11 +49,14 @@
         return $return;
 	}
 
-	/* public function insertDetalleTemp(array $pedido){
+	/* INSERTANDO DATOS DEL PEDIDO EN TABLA TEMP */
+	public function insertDetalleTemp(array $pedido){
+
 		$this->intIdUsuario = $pedido['idcliente'];
 		$this->intIdTransaccion = $pedido['idtransaccion'];
 		$productos = $pedido['productos'];
 
+		//instancia para validar datos en BD
 		$this->con = new Mysql();
 		$sql = "SELECT * FROM detalle_temp WHERE 
 					transaccionid = '{$this->intIdTransaccion}' AND 
@@ -61,6 +64,8 @@
 		$request = $this->con->select_all($sql);
 
 		if(empty($request)){
+
+			//insertando datos en BD detalle temp
 			foreach ($productos as $producto) {
 				$query_insert  = "INSERT INTO detalle_temp(personaid,productoid,precio,cantidad,transaccionid) 
 								  VALUES(?,?,?,?,?)";
@@ -77,6 +82,7 @@
 				transaccionid = '{$this->intIdTransaccion}' AND 
 				personaid = $this->intIdUsuario";
 			$request = $this->con->delete($sqlDel);
+			
 			foreach ($productos as $producto) {
 				$query_insert  = "INSERT INTO detalle_temp(personaid,productoid,precio,cantidad,transaccionid) 
 								  VALUES(?,?,?,?,?)";
@@ -89,7 +95,7 @@
 	        	$request_insert = $this->con->insert($query_insert,$arrData);
 			}
 		}
-	} */
+	}
 }
 
  ?>
